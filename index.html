@@ -1,1 +1,931 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14090d">
+<title>R & A | Wedding Invitation</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:#14090d;
+  color:#fff5e5;
+  font-family:Georgia,"Times New Roman",serif;
+  overflow-x:hidden;
+}
+
+button,a{font-family:inherit}
+
+.gold{
+  color:#e8c77d;
+}
+
+.gold-line{
+  width:70px;
+  height:1px;
+  background:#d7b568;
+  margin:25px auto;
+}
+
+.section{
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:70px 20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.section:before{
+  content:"";
+  position:absolute;
+  inset:20px;
+  border:1px solid rgba(218,184,104,.18);
+  pointer-events:none;
+}
+
+.container{
+  width:min(900px,100%);
+  position:relative;
+  z-index:2;
+}
+
+/* ENVELOPE */
+
+#opening{
+  min-height:100svh;
+  background:
+    radial-gradient(circle at 50% 35%,#5c3038 0%,transparent 38%),
+    radial-gradient(circle at 20% 80%,#36171e 0%,transparent 30%),
+    #14090d;
+}
+
+.envelope-area{
+  width:min(88vw,600px);
+  position:relative;
+}
+
+.envelope{
+  height:350px;
+  position:relative;
+  filter:drop-shadow(0 30px 35px rgba(0,0,0,.65));
+}
+
+.env-back{
+  position:absolute;
+  inset:0;
+  border-radius:8px;
+  border:1px solid #d6b46b;
+  background:linear-gradient(145deg,#7e454d,#32151c);
+}
+
+.letter{
+  position:absolute;
+  z-index:2;
+  left:8%;
+  right:8%;
+  bottom:5%;
+  height:92%;
+  background:#fff8eb;
+  color:#3b2023;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transform:translateY(55%);
+  transition:transform 1.5s cubic-bezier(.2,.8,.2,1);
+}
+
+.letter-r{
+  font-size:65px;
+  color:#96703b;
+}
+
+.pocket{
+  position:absolute;
+  inset:auto 0 0;
+  height:70%;
+  z-index:4;
+  background:linear-gradient(145deg,#67343b,#35171d);
+  clip-path:polygon(0 100%,50% 30%,100% 100%);
+}
+
+.flap{
+  position:absolute;
+  z-index:6;
+  inset:0 0 auto;
+  height:63%;
+  background:linear-gradient(160deg,#985c65,#4d272d);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;
+  transition:transform 1.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.seal{
+  position:absolute;
+  z-index:10;
+  left:50%;
+  top:56%;
+  width:82px;
+  height:82px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#f4d999;
+  font-weight:bold;
+  background:radial-gradient(circle at 35% 25%,#d8898f,#792e39 65%,#46151d);
+  border:2px solid rgba(244,217,153,.3);
+  box-shadow:0 8px 25px #000b;
+  transition:.5s;
+}
+
+.open .flap{
+  transform:rotateX(178deg);
+}
+
+.open .letter{
+  transform:translateY(-18%);
+}
+
+.open .seal{
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.4);
+}
+
+.open-btn{
+  margin-top:80px;
+  padding:14px 30px;
+  color:#f0d18b;
+  background:transparent;
+  border:1px solid #d6b46b;
+  border-radius:50px;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  font-size:11px;
+}
+
+/* INTRO */
+
+.bismillah{
+  font-size:clamp(27px,7vw,48px);
+  margin:25px 0;
+}
+
+.ayah{
+  font-size:clamp(20px,5vw,31px);
+  line-height:1.7;
+  font-style:italic;
+}
+
+.small{
+  font-size:11px;
+  letter-spacing:.2em;
+  opacity:.7;
+}
+
+.names{
+  font-size:clamp(75px,18vw,145px);
+  line-height:.7;
+  color:#efd28e;
+  margin:45px 0;
+}
+
+.names span{
+  display:block;
+  font-size:.35em;
+  color:#bb737c;
+  margin:25px;
+}
+
+/* EVENTS */
+
+.events{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:40px;
+}
+
+.event{
+  padding:30px 12px;
+  border:1px solid rgba(218,184,104,.4);
+  background:rgba(255,255,255,.025);
+}
+
+.event h3{
+  color:#e5c67e;
+  letter-spacing:.15em;
+  font-size:14px;
+  margin-bottom:15px;
+}
+
+.event .date{
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.event p{
+  font-size:12px;
+  line-height:1.8;
+  opacity:.75;
+}
+
+/* SCRATCH */
+
+.scratch-box{
+  width:min(650px,94vw);
+  height:280px;
+  margin:35px auto 20px;
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+  box-shadow:0 25px 60px #0009;
+}
+
+.scratch-under{
+  position:absolute;
+  inset:0;
+  background:#fff8eb;
+  color:#47272b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.reveal-title{
+  letter-spacing:.2em;
+  font-size:11px;
+}
+
+.reveal-date{
+  font-size:clamp(42px,10vw,72px);
+  color:#86535b;
+  margin:15px 0;
+}
+
+#scratch{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  touch-action:none;
+  cursor:crosshair;
+}
+
+.tip{
+  font-size:12px;
+  opacity:.6;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+  font-size:clamp(25px,7vw,52px);
+  color:#e9ca82;
+  margin:35px 0;
+}
+
+.rsvp{
+  display:inline-block;
+  text-decoration:none;
+  color:#f1d391;
+  border:1px solid #d6b46b;
+  border-radius:50px;
+  padding:14px 30px;
+  letter-spacing:.16em;
+  font-size:11px;
+}
+
+/* DECORATION */
+
+.flower{
+  position:absolute;
+  color:#d5b46d;
+  opacity:.25;
+  font-size:55px;
+}
+
+.f1{top:40px;left:20px}
+.f2{bottom:40px;right:20px}
+.f3{top:25%;right:5%}
+.f4{bottom:20%;left:5%}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#866f72;
+  font-size:10px;
+  letter-spacing:.2em;
+  background:#0d0609;
+}
+
+@media(max-width:650px){
+  .envelope{height:260px}
+  .events{grid-template-columns:1fr}
+  .section{padding:65px 18px}
+  .section:before{inset:12px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= ENVELOPE ================= -->
+
+<section id="opening" class="section">
+
+<div class="envelope-area" id="envelopeArea">
+
+<div class="envelope">
+
+<div class="env-back"></div>
+
+<div class="letter">
+<div>
+<div class="small">A WEDDING INVITATION</div>
+<div class="letter-r">R &amp; A</div>
+<div class="small">WITH LOVE &amp; DUAS</div>
+</div>
+</div>
+
+<div class="pocket"></div>
+
+<div class="flap"></div>
+
+<div class="seal">R &amp; A</div>
+
+</div>
+
+<button class="open-btn" id="openBtn">
+Open Invitation
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= INVITATION ================= -->
+
+<main id="invitation" style="display:none">
+
+<!-- BISMILLAH -->
+
+<section class="section">
+
+<div class="flower f1">❦</div>
+<div class="flower f2">❦</div>
+
+<div class="container">
+
+<div class="small gold">
+✦ &nbsp; BISMILLAH &nbsp; ✦
+</div>
+
+<div class="bismillah">
+بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+</div>
+
+<div class="ayah">
+“And We created you in pairs.”
+</div>
+
+<div class="small gold" style="margin-top:18px">
+THE NOBLE QUR'AN · 78:8
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NAMES -->
+
+<section class="section">
+
+<div class="flower f3">❦</div>
+
+<div class="container">
+
+<div class="small">
+TOGETHER WITH THEIR FAMILIES
+</div>
+
+<div class="names">
+R
+<span>&amp;</span>
+A
+</div>
+
+<div class="gold-line"></div>
+
+<div class="small">
+REQUEST THE PLEASURE OF YOUR COMPANY
+</div>
+
+<p style="
+margin:30px auto 0;
+max-width:600px;
+line-height:2;
+opacity:.75;
+">
+With the blessings of our families,
+we invite you to celebrate the beginning
+of our beautiful new journey together.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- EVENTS -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="small gold">
+✦ &nbsp; THE CELEBRATIONS &nbsp; ✦
+</div>
+
+<h2 style="
+font-size:clamp(35px,8vw,65px);
+font-weight:400;
+margin:25px 0;
+">
+Three Beautiful Days
+</h2>
+
+<div class="events">
+
+<div class="event">
+<h3>MEHNDI</h3>
+<div class="date">9 NOV</div>
+<p>
+Time: 7:00 PM<br>
+Venue: Wedding Hall
+</p>
+</div>
+
+<div class="event">
+<h3>NIKAH</h3>
+<div class="date">10 NOV</div>
+<p>
+Time: 6:00 PM<br>
+Venue: Wedding Hall
+</p>
+</div>
+
+<div class="event">
+<h3>WALIMA</h3>
+<div class="date">11 NOV</div>
+<p>
+Time: 7:30 PM<br>
+Venue: Wedding Hall
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SCRATCH -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="small gold">
+✦ &nbsp; A LITTLE SURPRISE &nbsp; ✦
+</div>
+
+<h2 style="
+font-size:clamp(34px,8vw,60px);
+font-weight:400;
+margin:25px 0 10px;
+">
+Scratch to Reveal
+</h2>
+
+<p style="opacity:.65">
+Use your finger to reveal our special date.
+</p>
+
+<div class="scratch-box">
+
+<div class="scratch-under">
+
+<div>
+
+<div class="reveal-title">
+SAVE THE DATE
+</div>
+
+<div class="reveal-date">
+9 · 10 · 11 NOV
+</div>
+
+<div class="reveal-title">
+R &amp; A · THE BEGINNING OF FOREVER
+</div>
+
+</div>
+
+</div>
+
+<canvas id="scratch"></canvas>
+
+</div>
+
+<div class="tip">
+👆 Scratch with your finger
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="section">
+
+<div class="flower f4">❦</div>
+
+<div class="container">
+
+<div class="small gold">
+✦ &nbsp; COUNTING DOWN &nbsp; ✦
+</div>
+
+<h2 style="
+font-size:clamp(35px,8vw,65px);
+font-weight:400;
+margin-top:25px;
+">
+Until Forever
+</h2>
+
+<div class="countdown" id="countdown">
+Loading...
+</div>
+
+<div class="gold-line"></div>
+
+<p style="
+max-width:600px;
+margin:0 auto 35px;
+line-height:2;
+opacity:.75;
+">
+Your presence, prayers and blessings
+would mean the world to us.
+</p>
+
+<a
+class="rsvp"
+href="https://wa.me/?text=Assalam%20o%20Alaikum%2C%20I%20would%20love%20to%20RSVP%20for%20R%20%26%20A%27s%20wedding."
+target="_blank"
+>
+RSVP ON WHATSAPP
+</a>
+
+</div>
+
+</section>
+
+
+<!-- VENUE -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="small gold">
+✦ &nbsp; THE VENUE &nbsp; ✦
+</div>
+
+<h2 style="
+font-size:clamp(35px,8vw,65px);
+font-weight:400;
+margin:25px 0;
+">
+Wedding Hall
+</h2>
+
+<p style="line-height:2;opacity:.75">
+Your venue address goes here.<br>
+Gujranwala, Pakistan
+</p>
+
+<div class="gold-line"></div>
+
+<a
+class="rsvp"
+href="https://www.google.com/maps"
+target="_blank"
+>
+VIEW ON GOOGLE MAPS
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+R &amp; A · WITH LOVE &amp; DUAS
+</footer>
+
+</main>
+
+
+<script>
+
+/* ===============================
+   OPEN ENVELOPE
+================================ */
+
+const openBtn =
+document.getElementById("openBtn");
+
+const envelopeArea =
+document.getElementById("envelopeArea");
+
+const opening =
+document.getElementById("opening");
+
+const invitation =
+document.getElementById("invitation");
+
+openBtn.addEventListener("click",()=>{
+
+envelopeArea.classList.add("open");
+
+setTimeout(()=>{
+
+opening.style.transition="opacity 1s";
+opening.style.opacity="0";
+
+setTimeout(()=>{
+
+opening.style.display="none";
+invitation.style.display="block";
+
+setupScratch();
+setupCountdown();
+
+},900);
+
+},1100);
+
+});
+
+
+/* ===============================
+   REAL TOUCH SCRATCH
+================================ */
+
+function setupScratch(){
+
+const canvas =
+document.getElementById("scratch");
+
+const box =
+document.querySelector(".scratch-box");
+
+const ctx =
+canvas.getContext("2d");
+
+let drawing=false;
+let last=null;
+let finished=false;
+
+
+function resize(){
+
+const r=box.getBoundingClientRect();
+
+const dpr=Math.min(
+window.devicePixelRatio||1,
+2
+);
+
+canvas.width=r.width*dpr;
+canvas.height=r.height*dpr;
+
+canvas.style.width=r.width+"px";
+canvas.style.height=r.height+"px";
+
+ctx.setTransform(
+dpr,0,0,dpr,0,0
+);
+
+const gradient=ctx.createLinearGradient(
+0,0,r.width,r.height
+);
+
+gradient.addColorStop(0,"#ded5c9");
+gradient.addColorStop(.5,"#aaa093");
+gradient.addColorStop(1,"#e5ddd2");
+
+ctx.fillStyle=gradient;
+ctx.fillRect(0,0,r.width,r.height);
+
+ctx.fillStyle="rgba(60,45,45,.35)";
+ctx.font="bold 15px Georgia";
+ctx.textAlign="center";
+
+ctx.fillText(
+"SCRATCH HERE",
+r.width/2,
+r.height/2
+);
+
+}
+
+resize();
+
+window.addEventListener("resize",resize);
+
+
+function point(e){
+
+const r=canvas.getBoundingClientRect();
+
+return{
+x:e.clientX-r.left,
+y:e.clientY-r.top
+};
+
+}
+
+
+canvas.addEventListener("pointerdown",e=>{
+
+drawing=true;
+last=point(e);
+
+});
+
+
+canvas.addEventListener("pointermove",e=>{
+
+if(!drawing)return;
+
+e.preventDefault();
+
+const p=point(e);
+
+ctx.globalCompositeOperation="destination-out";
+
+ctx.lineWidth=48;
+ctx.lineCap="round";
+ctx.lineJoin="round";
+
+ctx.beginPath();
+
+ctx.moveTo(last.x,last.y);
+ctx.lineTo(p.x,p.y);
+
+ctx.stroke();
+
+last=p;
+
+checkReveal();
+
+});
+
+
+window.addEventListener("pointerup",()=>{
+
+drawing=false;
+last=null;
+
+});
+
+
+function checkReveal(){
+
+if(finished)return;
+
+const data=ctx.getImageData(
+0,
+0,
+canvas.width,
+canvas.height
+).data;
+
+let transparent=0;
+let total=0;
+
+for(let i=3;i<data.length;i+=32){
+
+total++;
+
+if(data[i]<40)
+transparent++;
+
+}
+
+const percentage=
+transparent/total*100;
+
+if(percentage>58){
+
+finished=true;
+
+canvas.style.transition="opacity .8s";
+canvas.style.opacity="0";
+
+setTimeout(()=>{
+canvas.remove();
+},900);
+
+}
+
+}
+
+}
+
+
+/* ===============================
+   COUNTDOWN
+================================ */
+
+/*
+   CHANGE THE YEAR BELOW WHEN YOU
+   KNOW YOUR WEDDING YEAR.
+*/
+
+function setupCountdown(){
+
+const target =
+new Date(
+"2026-11-09T19:00:00+05:00"
+).getTime();
+
+const el =
+document.getElementById("countdown");
+
+
+function update(){
+
+const diff=
+target-Date.now();
+
+if(diff<=0){
+
+el.textContent="The celebration has begun ✦";
+return;
+
+}
+
+const days=
+Math.floor(
+diff/(1000*60*60*24)
+);
+
+const hours=
+Math.floor(
+diff/(1000*60*60)
+)%24;
+
+const minutes=
+Math.floor(
+diff/(1000*60)
+)%60;
+
+const seconds=
+Math.floor(
+diff/1000
+)%60;
+
+el.textContent=
+`${days}d · ${hours}h · ${minutes}m · ${seconds}s`;
+
+}
+
+update();
+
+setInterval(update,1000);
+
+}
+
+</script>
+
+</body>
+</html>
