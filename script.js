@@ -1,94 +1,23 @@
-
-const $=s=>document.querySelector(s);
-const $$=s=>document.querySelectorAll(s);
-const toast=(msg)=>{const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(window._toast);window._toast=setTimeout(()=>t.classList.remove('show'),2400)};
-
-// Gentle falling petals
-function petal(){
-  const p=document.createElement('i'); p.className='petal';
-  p.style.left=Math.random()*100+'vw';
-  p.style.setProperty('--x',(Math.random()*160-80)+'px');
-  p.style.animationDuration=(5+Math.random()*6)+'s';
-  p.style.opacity=.25+Math.random()*.55;
-  $('#petals').appendChild(p); setTimeout(()=>p.remove(),12000);
-}
-setInterval(petal,900); for(let i=0;i<7;i++) setTimeout(petal,i*300);
-
-$('#openInvite').addEventListener('click',()=>$('#reveal')?.scrollIntoView({behavior:'smooth'}));
-
-const target=new Date('2026-11-09T17:00:00+05:00').getTime();
-function countdown(){
-  let d=Math.max(0,target-Date.now()), sec=Math.floor(d/1000);
-  const vals=[Math.floor(sec/86400),Math.floor(sec%86400/3600),Math.floor(sec%3600/60),sec%60];
-  $$('#timer strong').forEach((el,i)=>el.textContent=String(vals[i]).padStart(2,'0'));
-}
-countdown();setInterval(countdown,1000);
-
-function makeICS(){
-  const ics=`BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//RabyaAndAdnan//Wedding//EN
-BEGIN:VEVENT
-UID:rabya-adnan-20261109@example.com
-DTSTAMP:20260917T000000Z
-DTSTART:20261109T120000Z
-DTEND:20261111T180000Z
-SUMMARY:Rabya & Adnan — Wedding Celebrations
-LOCATION:Marquee, Gujranwala
-DESCRIPTION:Mehndi 9 Nov • Nikah 10 Nov • Walima 11 Nov
-END:VEVENT
-END:VCALENDAR`;
-  const blob=new Blob([ics],{type:'text/calendar'}),a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);a.download='Rabya-And-Adnan-Wedding.ics';a.click();URL.revokeObjectURL(a.href);
-}
-$('#calendarBtn').onclick=makeICS;$('#calendarBtn2').onclick=makeICS;
-
-$$('.thumbs button').forEach((b,i)=>b.onclick=()=>{$('#mainGallery').src=b.dataset.img;$('#galleryCount').textContent=`${i+1} / 5`});
-
-$('#rsvpForm').onsubmit=e=>{e.preventDefault();toast('Thank you! Your RSVP has been received on this device.');e.target.reset()};
-$('#wishForm').onsubmit=e=>{e.preventDefault();toast('Your wishes have been saved on this device.');e.target.reset();$('#chars').textContent='0'};
-$$('textarea').forEach(t=>t.addEventListener('input',()=>$('#chars').textContent=t.value.length));
-
-const weddingAudio = $('#weddingAudio');
-let playing=false;
-
-async function toggleMusic(){
-  if(!weddingAudio) return;
-  if(weddingAudio.paused){
-    try{
-      await weddingAudio.play();
-      playing=true;
-      $('#musicBtn').textContent='♫';
-      toast('Lover — music on');
-    }catch(err){
-      toast('Add your legally obtained assets/lover.mp3 file first.');
-    }
-  }else{
-    weddingAudio.pause();
-    playing=false;
-    $('#musicBtn').textContent='♪';
-    toast('Music paused');
-  }
-}
-$('#musicBtn').onclick=toggleMusic;
-
-$('#musicSelect').addEventListener('change',e=>{
-  if(e.target.value==='none'){
-    weddingAudio.pause();
-    playing=false;
-    $('#musicBtn').textContent='♪';
-    toast('Music turned off');
-  }else{
-    toast('Selected: Taylor Swift — Lover');
-  }
-});
-
-$('#autoplay').addEventListener('change',e=>{
-  localStorage.setItem('musicAutoplay', e.target.checked ? '1' : '0');
-  if(e.target.checked) toast('Autoplay preference saved. Browsers may require a tap before music starts.');
-});
-
-if(localStorage.getItem('musicAutoplay')==='1') $('#autoplay').checked=true;
-$$('.swatch').forEach(b=>b.onclick=()=>{document.documentElement.style.setProperty('--pink',getComputedStyle(b).backgroundColor);toast('Accent preview changed')});
-$('#saveChanges').onclick=()=>{localStorage.setItem('coupleNames',$('#namesInput').value);toast('Changes saved on this device')};
-if(localStorage.getItem('coupleNames'))$('#namesInput').value=localStorage.getItem('coupleNames');
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400)};
+window.addEventListener('load',()=>setTimeout(()=>$('#preloader').classList.add('hide'),650));
+// petals
+for(let i=0;i<22;i++){const p=document.createElement('i');p.className='petal';p.style.left=Math.random()*100+'%';p.style.top=(-10-Math.random()*30)+'%';p.style.animationDuration=(7+Math.random()*8)+'s';p.style.animationDelay=(Math.random()*8)+'s';p.style.transform=`scale(${.5+Math.random()*.9}) rotate(${Math.random()*180}deg)`;$('#petals').appendChild(p)}
+// envelope open
+const stage=$('#envelopeStage');let opened=false;function openInvitation(){if(opened)return;opened=true;stage.classList.add('open');setTimeout(()=>{$('#welcome').classList.add('show');$('#welcome').scrollIntoView({behavior:'smooth'});},900);playMusic(true)}stage.addEventListener('click',openInvitation);stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openInvitation()});
+// music
+const audio=$('#weddingAudio'), musicBtn=$('#musicBtn');let musicWanted=false;async function playMusic(fromOpen=false){if($('#musicSelect')?.value==='none')return;musicWanted=true;try{await audio.play();musicBtn.innerHTML='❚❚<span>Music</span>'}catch(e){if(!fromOpen)toast('Add assets/lover.mp3 to enable music');}}musicBtn.addEventListener('click',()=>audio.paused?playMusic():audio.pause());audio.addEventListener('pause',()=>musicBtn.innerHTML='♪<span>Music</span>');
+// reveal sections
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.14});$$('.reveal-section').forEach(e=>obs.observe(e));
+// scratch canvas
+const canvas=$('#scratchCanvas'),ctx=canvas.getContext('2d');function setupScratch(){const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;ctx.scale(d,d);const g=ctx.createLinearGradient(0,0,r.width,r.height);g.addColorStop(0,'#c79a55');g.addColorStop(.5,'#8b633e');g.addColorStop(1,'#d8ae71');ctx.fillStyle=g;ctx.fillRect(0,0,r.width,r.height);ctx.fillStyle='rgba(255,245,232,.18)';ctx.font='12px Montserrat';ctx.textAlign='center';ctx.fillText('SCRATCH HERE',r.width/2,r.height/2)}setupScratch();addEventListener('resize',setupScratch);let scratching=false;function scratch(x,y){ctx.globalCompositeOperation='destination-out';ctx.beginPath();ctx.arc(x,y,32,0,Math.PI*2);ctx.fill()}canvas.addEventListener('pointerdown',e=>{scratching=true;canvas.setPointerCapture(e.pointerId);scratch(e.offsetX,e.offsetY)});canvas.addEventListener('pointermove',e=>{if(scratching)scratch(e.offsetX,e.offsetY)});canvas.addEventListener('pointerup',()=>scratching=false);canvas.addEventListener('pointercancel',()=>scratching=false);
+// countdown
+const target=new Date('2026-11-09T17:00:00+05:00');function tick(){let s=Math.max(0,target-Date.now())/1000;s=Math.floor(s);const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);const sec=s%60;const vals=[d,h,m,sec];$$('#timer b').forEach((x,i)=>x.textContent=String(vals[i]).padStart(2,'0'))}tick();setInterval(tick,1000);
+// gallery
+const imgs=['assets/couple.jpg','assets/gallery1.jpg','assets/gallery2.jpg','assets/gallery3.jpg','assets/gallery4.jpg'];const thumbs=$('#galleryThumbs');let gi=0;imgs.forEach((src,i)=>{const b=document.createElement('button');if(i===0)b.classList.add('active');b.innerHTML=`<img src="${src}" alt="Gallery ${i+1}">`;b.onclick=()=>showGallery(i);thumbs.appendChild(b)});function showGallery(i){gi=(i+imgs.length)%imgs.length;$('#galleryMain').src=imgs[gi];$('#galleryCount').textContent=`${gi+1} / ${imgs.length}`;$$('#galleryThumbs button').forEach((b,j)=>b.classList.toggle('active',j===gi))}$('.prev').onclick=()=>showGallery(gi-1);$('.next').onclick=()=>showGallery(gi+1);let startX=0;$('#galleryMain').addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});$('#galleryMain').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>40)showGallery(gi+(dx<0?1:-1))},{passive:true});
+// forms local feedback
+$('#rsvpForm').addEventListener('submit',e=>{e.preventDefault();toast('Thank you — your RSVP is saved on this device.');e.target.reset()});$('#wishForm').addEventListener('submit',e=>{e.preventDefault();toast('Your wishes are saved on this device.');e.target.reset();$('#chars').textContent='0'});$('#wishForm textarea').addEventListener('input',e=>$('#chars').textContent=e.target.value.length);
+// calendar
+function calendar(){const start='20261109T170000',end='20261109T220000';const url=`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Rabya & Adnan Wedding Celebration')}&dates=${start}/${end}&details=${encodeURIComponent('Wedding celebration of Rabya & Adnan')}&location=${encodeURIComponent('Marquee, Gujranwala')}`;location.href=url}$('#calendarBtn').onclick=calendar;$('#calendarBtn2').onclick=calendar;
+// customize
+$$('.swatches button').forEach(b=>b.onclick=()=>{document.documentElement.dataset.theme=b.dataset.theme});$('#saveChanges').onclick=()=>{localStorage.setItem('raNames',$('#namesInput').value);toast('Invitation settings saved.')};const saved=localStorage.getItem('raNames');if(saved)$('#namesInput').value=saved;$('#musicSelect').onchange=()=>{if($('#musicSelect').value==='none'){audio.pause();toast('Music turned off')}else toast('Music set to Taylor Swift — Lover')};

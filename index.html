@@ -1,189 +1,71 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#170d0b">
-  <meta name="description" content="Rabya & Adnan — Premium Wedding Invitation">
-  <title>R & A — Wedding Invitation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1b0e0d"><meta name="description" content="Rabya & Adnan — interactive wedding invitation">
+<title>Rabya & Adnan — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="petals" aria-hidden="true"></div>
-  <button class="music" id="musicBtn" aria-label="Toggle music">♪</button>
-  <audio id="weddingAudio" preload="metadata" loop>
-    <source src="assets/lover.mp3" type="audio/mpeg">
-  </audio>
+<div class="preloader" id="preloader"><div class="loader-monogram">R <span>&amp;</span> A</div><div class="loader-line"></div></div>
+<div class="petals" id="petals"></div>
+<button class="music" id="musicBtn" aria-label="Play music">♪<span>Music</span></button>
+<audio id="weddingAudio" loop preload="none"><source src="assets/lover.mp3" type="audio/mpeg"></audio>
+<main>
+<section class="hero" id="home">
+  <div class="hero-bg"></div><div class="hero-vignette"></div>
+  <div class="hero-top"><span>R &amp; A</span><small>WEDDING INVITATION</small></div>
+  <div class="envelope-stage" id="envelopeStage" role="button" tabindex="0" aria-label="Tap to open invitation">
+    <div class="envelope-shadow"></div>
+    <div class="envelope3d" id="envelope3d">
+      <div class="env-back"></div><div class="env-paper"><div class="paper-script">Rabya <i>&amp;</i> Adnan</div><div class="paper-small">YOU ARE CORDIALLY INVITED</div></div>
+      <div class="env-flap"></div><div class="env-front"></div>
+      <div class="seal">R<span>&amp;</span>A</div>
+    </div>
+  </div>
+  <div class="tap-open"><b>Tap to Open</b><span>Touch the invitation</span><i>⌄</i></div>
+</section>
 
-  <main>
-    <section class="hero section-dark">
-      <div class="hero-glow"></div>
-      <div class="hero-copy">
-        <div class="monogram">R <span>&amp;</span> A</div>
-        <h1>Wedding Invitation</h1>
-        <p class="tagline">TWO HEARTS&nbsp;&nbsp;•&nbsp;&nbsp;ONE BEAUTIFUL JOURNEY</p>
-      </div>
-      <button class="envelope-wrap" id="openInvite" aria-label="Open invitation">
-        <div class="envelope">
-          <img src="assets/envelope.jpg" alt="">
-          <div class="seal">R<span>&amp;</span>A</div>
-        </div>
-        <span class="tap">Tap to Open</span>
-        <span class="down">⌄</span>
-      </button>
-    </section>
+<section class="welcome reveal-section" id="welcome">
+  <div class="doors" id="doors"><div class="door door-left"></div><div class="door door-right"></div><div class="door-card"><span class="eyebrow">WITH THE BLESSINGS OF ALLAH</span><div class="big-script">Rabya <i>&amp;</i> Adnan</div><p>Our families are delighted to invite you to celebrate the beginning of our forever.</p><div class="ornament">✦</div></div></div>
+  <div class="scroll-cue">Scroll to discover <span>↓</span></div>
+</section>
 
-    <section class="reveal section-dark">
-      <div class="doors">
-        <div class="door left"></div>
-        <div class="door right"></div>
-        <div class="invite-card">
-          <span class="mini">R &amp; A</span>
-          <div class="script">Rabya <span>&amp;</span> Adnan</div>
-          <p>With the blessings of Allah,<br>our families are delighted<br>to invite you to our wedding.</p>
-          <div class="ornament">❧</div>
-        </div>
-      </div>
-      <div class="scroll-hint">Scroll <span>↓</span></div>
-    </section>
+<section class="intro dark-panel reveal-section" id="date">
+  <div class="floral-corner"></div><div class="intro-copy"><span class="eyebrow">OUR FOREVER BEGINS</span><h2>Scratch to reveal<br>the date</h2></div>
+  <div class="scratch-wrap"><div class="scratch-date"><strong>9 <em>•</em> 10 <em>•</em> 11</strong><span>NOVEMBER 2026</span></div><canvas id="scratchCanvas"></canvas></div>
+  <p class="scratch-note">Use your finger to reveal</p>
+</section>
 
-    <section class="intro section-dark">
-      <div class="gold-wash"></div>
-      <h2>Our Forever Begins</h2>
-      <p>Scratch to reveal the date</p>
-      <div class="date-reveal">
-        <div class="brush"></div>
-        <div class="date">9 <span>•</span> 10 <span>•</span> 11</div>
-        <div class="month">NOVEMBER 2026</div>
-      </div>
-    </section>
+<section class="countdown dark-panel reveal-section" id="countdown">
+  <span class="eyebrow">COUNTDOWN TO OUR BIG DAY</span><h2>The moment is getting closer</h2>
+  <div class="timer" id="timer"><div><b>--</b><span>Days</span></div><div><b>--</b><span>Hours</span></div><div><b>--</b><span>Minutes</span></div><div><b>--</b><span>Seconds</span></div></div>
+  <div class="count-photo"><img src="assets/arch.jpg" alt="Wedding arch"><div class="photo-caption">A night to remember</div></div>
+  <button class="gold-btn" id="calendarBtn">＋ Add to Calendar</button>
+</section>
 
-    <section class="countdown section-dark">
-      <h2>Countdown to Our Big Day</h2>
-      <div class="timer" id="timer">
-        <div><strong>--</strong><span>Days</span></div>
-        <div><strong>--</strong><span>Hours</span></div>
-        <div><strong>--</strong><span>Minutes</span></div>
-        <div><strong>--</strong><span>Seconds</span></div>
-      </div>
-      <div class="timer-line">──── <span>♥</span> ────</div>
-      <img class="arch" src="assets/arch.jpg" alt="Wedding arch">
-      <button class="outline-btn" id="calendarBtn">▣ &nbsp; Add to Calendar</button>
-    </section>
+<section class="events light-panel reveal-section" id="events"><div class="section-title"><span class="eyebrow">THE CELEBRATION</span><h2>Wedding Events</h2><p>Three beautiful moments, one unforgettable journey.</p></div>
+<div class="timeline">
+<article><div class="dot">01</div><div class="event-card"><img src="assets/gallery1.jpg"><div><span>09 NOVEMBER 2026</span><h3>Mehndi</h3><p>05:00 PM — 10:00 PM<br>Marquee, Gujranwala</p></div></div></article>
+<article><div class="dot">02</div><div class="event-card"><img src="assets/gallery2.jpg"><div><span>10 NOVEMBER 2026</span><h3>Nikah</h3><p>03:00 PM — 05:00 PM<br>Marquee, Gujranwala</p></div></div></article>
+<article><div class="dot">03</div><div class="event-card"><img src="assets/venue.jpg"><div><span>11 NOVEMBER 2026</span><h3>Walima</h3><p>07:00 PM — 11:00 PM<br>Marquee, Gujranwala</p></div></div></article>
+</div></section>
 
-    <section class="events section-light">
-      <div class="section-heading">
-        <h2>Wedding Events</h2>
-      </div>
-      <div class="timeline">
-        <article class="event">
-          <img src="assets/gallery1.jpg" alt="">
-          <div><h3>Mehndi</h3><p>9 November 2026<br><b>05:00 PM - 10:00 PM</b><br>⌖ Marquee, Gujranwala</p></div>
-        </article>
-        <article class="event">
-          <img src="assets/gallery2.jpg" alt="">
-          <div><h3>♧ Nikah</h3><p>10 November 2026<br><b>03:00 PM - 05:00 PM</b><br>⌖ Marquee, Gujranwala</p></div>
-        </article>
-        <article class="event">
-          <img src="assets/venue.jpg" alt="">
-          <div><h3>♨ Walima</h3><p>11 November 2026<br><b>07:00 PM - 11:00 PM</b><br>⌖ Marquee, Gujranwala</p></div>
-        </article>
-      </div>
-    </section>
+<section class="venue light-panel reveal-section" id="venue"><div class="section-title"><span class="eyebrow">WHERE TO FIND US</span><h2>The Venue</h2></div><div class="venue-grid"><div class="venue-photo"><img src="assets/venue.jpg" alt="Venue"></div><div class="venue-info"><h3>Marquee, Gujranwala</h3><p>We would love to celebrate this beautiful occasion with you.</p><a class="outline-btn" href="https://www.google.com/maps/search/?api=1&query=Marquee%2C%20Gujranwala" target="_blank" rel="noopener">⌖ View on Google Maps</a><div class="map-card">GUJRANWALA<br><b>♥</b></div></div></div></section>
 
-    <section class="venue section-light">
-      <h2>Venue</h2>
-      <div class="venue-card">
-        <img src="assets/venue.jpg" alt="Wedding venue">
-        <div class="venue-name">Marquee, Gujranwala</div>
-        <a class="pill-btn" href="https://www.google.com/maps/search/?api=1&query=Marquee%2C%20Gujranwala" target="_blank" rel="noopener">⌖ &nbsp; View on Google Maps</a>
-        <div class="map-faux">
-          <span>Gujranwala</span><i>♥</i>
-        </div>
-      </div>
-    </section>
+<section class="gallery dark-panel reveal-section" id="gallery"><span class="eyebrow">A FEW FAVORITE MOMENTS</span><h2>Our Moments</h2><div class="gallery-main"><button class="g-arrow prev" aria-label="Previous">‹</button><img id="galleryMain" src="assets/couple.jpg" alt="Wedding moment"><button class="g-arrow next" aria-label="Next">›</button></div><div class="gallery-thumbs" id="galleryThumbs"></div><div class="gallery-count" id="galleryCount">1 / 5</div></section>
 
-    <section class="moments section-dark">
-      <h2>Our Moments</h2>
-      <div class="main-photo"><img id="mainGallery" src="assets/couple.jpg" alt="A wedding moment"></div>
-      <div class="thumbs">
-        <button data-img="assets/couple.jpg"><img src="assets/gallery1.jpg" alt=""></button>
-        <button data-img="assets/envelope.jpg"><img src="assets/gallery2.jpg" alt=""></button>
-        <button data-img="assets/arch.jpg"><img src="assets/gallery3.jpg" alt=""></button>
-        <button data-img="assets/venue.jpg"><img src="assets/gallery4.jpg" alt=""></button>
-        <button data-img="assets/ending.jpg"><img src="assets/gallery1.jpg" alt=""></button>
-      </div>
-      <small id="galleryCount">1 / 5</small>
-    </section>
+<section class="rsvp light-panel reveal-section" id="rsvp"><div class="form-wrap"><span class="eyebrow">KINDLY RESPOND</span><h2>RSVP</h2><p>Let us know if you'll be joining us.</p><form id="rsvpForm"><div class="choices"><label><input type="radio" name="attending" value="yes" checked><span>Yes, I'll be there!</span></label><label><input type="radio" name="attending" value="no"><span>Sorry, I can't attend</span></label><label><input type="radio" name="attending" value="maybe"><span>Maybe</span></label></div><input name="name" placeholder="Your Name *" required><input name="count" type="number" min="1" max="20" placeholder="Number of guests"><button class="rose-btn">Send RSVP</button></form></div>
+<div class="form-wrap wishes"><span class="eyebrow">LEAVE A LITTLE LOVE</span><h2>Your Wishes</h2><p>Write a message for the couple.</p><form id="wishForm"><input name="name" placeholder="Your Name *" required><textarea name="message" maxlength="300" placeholder="Your wishes, advice or kind words..." required></textarea><div class="char"><span id="chars">0</span>/300</div><button class="rose-btn">Send Message</button></form></div></section>
 
-    <section class="forms section-light">
-      <div class="form-card">
-        <h2>RSVP</h2>
-        <p>Let us know if you'll be joining us</p>
-        <form id="rsvpForm">
-          <label><input type="radio" name="attending" value="Yes, I'll be there!" checked> <span>Yes, I'll be there!</span></label>
-          <label><input type="radio" name="attending" value="No, I'm unable to attend"> <span>No, I'm unable to attend</span></label>
-          <label><input type="radio" name="attending" value="Maybe"> <span>Maybe</span></label>
-          <input required name="name" placeholder="Your Name *">
-          <input name="count" type="number" min="1" max="20" placeholder="Guest Count (Optional)">
-          <button class="submit-btn" type="submit">Submit</button>
-        </form>
-      </div>
-      <div class="form-card">
-        <h2>Share Your Wishes</h2>
-        <p>Write a message for the couple</p>
-        <form id="wishForm">
-          <input required name="name" placeholder="Your Name *">
-          <textarea required maxlength="300" name="message" placeholder="Your wishes, advice or kind words..."></textarea>
-          <small class="counter"><span id="chars">0</span>/300</small>
-          <button class="submit-btn" type="submit">Send Message</button>
-        </form>
-      </div>
-    </section>
+<section class="actions dark-panel reveal-section"><div class="action-grid"><a href="https://wa.me/?text=Congratulations%20Rabya%20%26%20Adnan!" target="_blank" rel="noopener" class="action-card"><b>◉</b><span>WhatsApp<small>For quick questions</small></span></a><a href="https://www.google.com/maps/search/?api=1&query=Marquee%2C%20Gujranwala" target="_blank" rel="noopener" class="action-card"><b>⌖</b><span>Directions<small>Open Google Maps</small></span></a><button class="action-card" id="calendarBtn2"><b>＋</b><span>Add to Calendar<small>Save the date</small></span></button></div><p class="closing">We can't wait to celebrate<br><i>with you!</i><br>♥</p></section>
 
-    <section class="actions section-dark">
-      <a class="action whatsapp" href="https://wa.me/?text=Congratulations%20Rabya%20%26%20Adnan!" target="_blank" rel="noopener"><b>◔</b><span>Chat on WhatsApp<small>For quick questions</small></span></a>
-      <a class="action" href="https://www.google.com/maps/search/?api=1&query=Marquee%2C%20Gujranwala" target="_blank" rel="noopener"><b>⌖</b><span>Get Directions<small>Open in Google Maps</small></span></a>
-      <button class="action" id="calendarBtn2"><b>▣</b><span>Add to Calendar<small>Save the date</small></span></button>
-      <p class="closing">We can't wait to celebrate<br>with you!<br><span>♥</span></p>
-    </section>
-
-    <section class="thanks section-dark">
-      <div class="thanks-bg"></div>
-      <div class="thanks-content">
-        <div class="script">Rabya <span>&amp;</span> Adnan</div>
-        <p>Thank you for being a part of<br>our special journey</p>
-        <div class="hash">#RabyaAndAdnan</div>
-        <div class="social">◎ &nbsp; f &nbsp; ◉</div>
-      </div>
-    </section>
-
-    <section class="customize section-light">
-      <h2>Customize Your Invitation</h2>
-      <p class="sub">(Easy to change later)</p>
-      <label>Couple Names<input value="Rabya & Adnan" id="namesInput"></label>
-      <label>Colors<div class="swatches">
-        <button class="swatch s1" data-theme="rose"></button><button class="swatch s2" data-theme="plum"></button><button class="swatch s3" data-theme="mauve"></button><button class="swatch s4" data-theme="blush"></button><button class="swatch s5" data-theme="gold"></button>
-      </div></label>
-      <label>Music<select id="musicSelect"><option value="lover">Taylor Swift — Lover</option><option value="none">No music</option></select></label>
-      <label class="toggle-row">Autoplay <input type="checkbox" id="autoplay"><span class="toggle"></span></label>
-      <label>Gallery Photos<button class="upload-look" type="button">Upload Photos</button></label>
-      <button class="save-btn" id="saveChanges">Save Changes</button>
-    </section>
-
-    <section class="final section-dark">
-      <div class="final-copy">
-        <div>Same love<br>New chapter<br>Forever</div>
-        <span>R &amp; A</span>
-        <div class="tiny-orn">— ✦ —</div>
-      </div>
-    </section>
-  </main>
-
-  <div class="toast" id="toast"></div>
-  <script src="script.js"></script>
-</body>
-</html>
+<section class="thanks dark-panel reveal-section"><img src="assets/ending.jpg" alt="Romantic wedding scene"><div class="thanks-overlay"></div><div class="thanks-content"><div class="big-script">Rabya <i>&amp;</i> Adnan</div><p>Thank you for being part of<br>our special journey</p><span>#RabyaAndAdnan</span></div></section>
+<section class="customize light-panel"><span class="eyebrow">YOUR INVITATION</span><h2>Customize</h2><label>Couple Names<input id="namesInput" value="Rabya & Adnan"></label><label>Accent <div class="swatches"><button data-theme="rose"></button><button data-theme="plum"></button><button data-theme="gold"></button><button data-theme="blush"></button></div></label><label>Music<select id="musicSelect"><option value="lover">Taylor Swift — Lover</option><option value="none">No music</option></select></label><button class="rose-btn" id="saveChanges">Save Changes</button></section>
+<section class="final dark-panel"><div class="big-script">Same love<br>New chapter<br>Forever</div><span>R &amp; A</span></section>
+</main>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body></html>
