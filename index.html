@@ -1,71 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#1b0e0d"><meta name="description" content="Rabya & Adnan — interactive wedding invitation">
-<title>Rabya & Adnan — Wedding Invitation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="preloader" id="preloader"><div class="loader-monogram">R <span>&amp;</span> A</div><div class="loader-line"></div></div>
-<div class="petals" id="petals"></div>
-<button class="music" id="musicBtn" aria-label="Play music">♪<span>Music</span></button>
-<audio id="weddingAudio" loop preload="none"><source src="assets/lover.mp3" type="audio/mpeg"></audio>
-<main>
-<section class="hero" id="home">
-  <div class="hero-bg"></div><div class="hero-vignette"></div>
-  <div class="hero-top"><span>R &amp; A</span><small>WEDDING INVITATION</small></div>
-  <div class="envelope-stage" id="envelopeStage" role="button" tabindex="0" aria-label="Tap to open invitation">
-    <div class="envelope-shadow"></div>
-    <div class="envelope3d" id="envelope3d">
-      <div class="env-back"></div><div class="env-paper"><div class="paper-script">Rabya <i>&amp;</i> Adnan</div><div class="paper-small">YOU ARE CORDIALLY INVITED</div></div>
-      <div class="env-flap"></div><div class="env-front"></div>
-      <div class="seal">R<span>&amp;</span>A</div>
-    </div>
-  </div>
-  <div class="tap-open"><b>Tap to Open</b><span>Touch the invitation</span><i>⌄</i></div>
-</section>
-
-<section class="welcome reveal-section" id="welcome">
-  <div class="doors" id="doors"><div class="door door-left"></div><div class="door door-right"></div><div class="door-card"><span class="eyebrow">WITH THE BLESSINGS OF ALLAH</span><div class="big-script">Rabya <i>&amp;</i> Adnan</div><p>Our families are delighted to invite you to celebrate the beginning of our forever.</p><div class="ornament">✦</div></div></div>
-  <div class="scroll-cue">Scroll to discover <span>↓</span></div>
-</section>
-
-<section class="intro dark-panel reveal-section" id="date">
-  <div class="floral-corner"></div><div class="intro-copy"><span class="eyebrow">OUR FOREVER BEGINS</span><h2>Scratch to reveal<br>the date</h2></div>
-  <div class="scratch-wrap"><div class="scratch-date"><strong>9 <em>•</em> 10 <em>•</em> 11</strong><span>NOVEMBER 2026</span></div><canvas id="scratchCanvas"></canvas></div>
-  <p class="scratch-note">Use your finger to reveal</p>
-</section>
-
-<section class="countdown dark-panel reveal-section" id="countdown">
-  <span class="eyebrow">COUNTDOWN TO OUR BIG DAY</span><h2>The moment is getting closer</h2>
-  <div class="timer" id="timer"><div><b>--</b><span>Days</span></div><div><b>--</b><span>Hours</span></div><div><b>--</b><span>Minutes</span></div><div><b>--</b><span>Seconds</span></div></div>
-  <div class="count-photo"><img src="assets/arch.jpg" alt="Wedding arch"><div class="photo-caption">A night to remember</div></div>
-  <button class="gold-btn" id="calendarBtn">＋ Add to Calendar</button>
-</section>
-
-<section class="events light-panel reveal-section" id="events"><div class="section-title"><span class="eyebrow">THE CELEBRATION</span><h2>Wedding Events</h2><p>Three beautiful moments, one unforgettable journey.</p></div>
-<div class="timeline">
-<article><div class="dot">01</div><div class="event-card"><img src="assets/gallery1.jpg"><div><span>09 NOVEMBER 2026</span><h3>Mehndi</h3><p>05:00 PM — 10:00 PM<br>Marquee, Gujranwala</p></div></div></article>
-<article><div class="dot">02</div><div class="event-card"><img src="assets/gallery2.jpg"><div><span>10 NOVEMBER 2026</span><h3>Nikah</h3><p>03:00 PM — 05:00 PM<br>Marquee, Gujranwala</p></div></div></article>
-<article><div class="dot">03</div><div class="event-card"><img src="assets/venue.jpg"><div><span>11 NOVEMBER 2026</span><h3>Walima</h3><p>07:00 PM — 11:00 PM<br>Marquee, Gujranwala</p></div></div></article>
-</div></section>
-
-<section class="venue light-panel reveal-section" id="venue"><div class="section-title"><span class="eyebrow">WHERE TO FIND US</span><h2>The Venue</h2></div><div class="venue-grid"><div class="venue-photo"><img src="assets/venue.jpg" alt="Venue"></div><div class="venue-info"><h3>Marquee, Gujranwala</h3><p>We would love to celebrate this beautiful occasion with you.</p><a class="outline-btn" href="https://www.google.com/maps/search/?api=1&query=Marquee%2C%20Gujranwala" target="_blank" rel="noopener">⌖ View on Google Maps</a><div class="map-card">GUJRANWALA<br><b>♥</b></div></div></div></section>
-
-<section class="gallery dark-panel reveal-section" id="gallery"><span class="eyebrow">A FEW FAVORITE MOMENTS</span><h2>Our Moments</h2><div class="gallery-main"><button class="g-arrow prev" aria-label="Previous">‹</button><img id="galleryMain" src="assets/couple.jpg" alt="Wedding moment"><button class="g-arrow next" aria-label="Next">›</button></div><div class="gallery-thumbs" id="galleryThumbs"></div><div class="gallery-count" id="galleryCount">1 / 5</div></section>
-
-<section class="rsvp light-panel reveal-section" id="rsvp"><div class="form-wrap"><span class="eyebrow">KINDLY RESPOND</span><h2>RSVP</h2><p>Let us know if you'll be joining us.</p><form id="rsvpForm"><div class="choices"><label><input type="radio" name="attending" value="yes" checked><span>Yes, I'll be there!</span></label><label><input type="radio" name="attending" value="no"><span>Sorry, I can't attend</span></label><label><input type="radio" name="attending" value="maybe"><span>Maybe</span></label></div><input name="name" placeholder="Your Name *" required><input name="count" type="number" min="1" max="20" placeholder="Number of guests"><button class="rose-btn">Send RSVP</button></form></div>
-<div class="form-wrap wishes"><span class="eyebrow">LEAVE A LITTLE LOVE</span><h2>Your Wishes</h2><p>Write a message for the couple.</p><form id="wishForm"><input name="name" placeholder="Your Name *" required><textarea name="message" maxlength="300" placeholder="Your wishes, advice or kind words..." required></textarea><div class="char"><span id="chars">0</span>/300</div><button class="rose-btn">Send Message</button></form></div></section>
-
-<section class="actions dark-panel reveal-section"><div class="action-grid"><a href="https://wa.me/?text=Congratulations%20Rabya%20%26%20Adnan!" target="_blank" rel="noopener" class="action-card"><b>◉</b><span>WhatsApp<small>For quick questions</small></span></a><a href="https://www.google.com/maps/search/?api=1&query=Marquee%2C%20Gujranwala" target="_blank" rel="noopener" class="action-card"><b>⌖</b><span>Directions<small>Open Google Maps</small></span></a><button class="action-card" id="calendarBtn2"><b>＋</b><span>Add to Calendar<small>Save the date</small></span></button></div><p class="closing">We can't wait to celebrate<br><i>with you!</i><br>♥</p></section>
-
-<section class="thanks dark-panel reveal-section"><img src="assets/ending.jpg" alt="Romantic wedding scene"><div class="thanks-overlay"></div><div class="thanks-content"><div class="big-script">Rabya <i>&amp;</i> Adnan</div><p>Thank you for being part of<br>our special journey</p><span>#RabyaAndAdnan</span></div></section>
-<section class="customize light-panel"><span class="eyebrow">YOUR INVITATION</span><h2>Customize</h2><label>Couple Names<input id="namesInput" value="Rabya & Adnan"></label><label>Accent <div class="swatches"><button data-theme="rose"></button><button data-theme="plum"></button><button data-theme="gold"></button><button data-theme="blush"></button></div></label><label>Music<select id="musicSelect"><option value="lover">Taylor Swift — Lover</option><option value="none">No music</option></select></label><button class="rose-btn" id="saveChanges">Save Changes</button></section>
-<section class="final dark-panel"><div class="big-script">Same love<br>New chapter<br>Forever</div><span>R &amp; A</span></section>
-</main>
-<div class="toast" id="toast"></div>
-<script src="script.js"></script>
-</body></html>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rabya & Adnan</title><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><div id="petals"></div>
+<section id="cover" class="cover"><div class="brand">R <i>&</i> A</div><small>WEDDING INVITATION</small><p>TWO HEARTS • ONE BEAUTIFUL JOURNEY</p><div id="env" class="env"><div class="flap"></div><div class="seal">R<span>&</span>A</div><div class="enames">With love,<strong>Rabya & Adnan</strong></div></div><button id="open">Tap to Open<br>♡</button></section>
+<main id="site" class="hidden">
+<section class="paper intro"><div class="frame"><div class="arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div><div class="verse">And We created you<br>in pairs</div><small>(Qur'an 78:8)</small><hr><p>With the blessings of Allah,<br>our families and hearts are delighted<br>to invite you to the wedding of</p><h1>Rabya & Adnan</h1><div>✦ ♥ ✦</div></div><a href="#scratch">Scroll Down<br>⌄</a></section>
+<section id="scratch" class="paper scratchSec"><small>A LITTLE SURPRISE</small><h2>Our Forever Begins</h2><p>Scratch to reveal the date</p><div class="scratch"><div class="revealed"><b>9 · 10 · 11</b><span>NOVEMBER 2026</span><em>Mehndi • Nikah • Walima</em></div><canvas id="canvas"></canvas><label>✦ SCRATCH HERE ✦</label></div></section>
+<section class="dark countdown"><small>THE COUNTDOWN</small><h2>Countdown to<br>Our Big Day</h2><div class="timer"><div><b id="d">--</b><span>Days</span></div><div><b id="h">--</b><span>Hours</span></div><div><b id="m">--</b><span>Minutes</span></div><div><b id="s">--</b><span>Seconds</span></div></div><button id="cal">▣ Add to Calendar</button></section>
+<section class="paper events"><small>SAVE THE DATES</small><h2>Wedding Events</h2><p>Three celebrations, one beautiful story</p><div class="timeline"><article>✿<div><h3>Mehndi</h3><p>9 November 2026</p><p>◷ Time to be announced</p><p>⌖ Marquee, Gujranwala</p></div></article><article>♡<div><h3>Nikah</h3><p>10 November 2026</p><p>◷ Time to be announced</p><p>⌖ Marquee, Gujranwala</p></div></article><article>✦<div><h3>Walima</h3><p>11 November 2026</p><p>◷ Time to be announced</p><p>⌖ Marquee, Gujranwala</p></div></article></div></section>
+<section class="paper venue"><small>WHERE TO JOIN US</small><h2>Venue</h2><div class="card"><div class="venueart">R <span>&</span> A</div><h3>Marquee, Gujranwala</h3><p>Exact marquee details will be added later.</p><a href="https://www.google.com/maps/search/?api=1&query=Gujranwala%20Pakistan" target="_blank">⌖ View on Google Maps</a><div class="map">Gujranwala<br>📍</div></div></section>
+<section class="dark moments"><small>A FEW BEAUTIFUL MOMENTS</small><h2>Our Moments</h2><div class="gallery"><div>R & A</div><div>♡</div><div>Forever</div><div>✦</div><div>Rabya</div><div>Adnan</div></div><p>Your real wedding photos can replace these placeholders.</p></section>
+<section class="paper forms"><div class="form"><small>KINDLY RESPOND</small><h2>RSVP</h2><p>Let us know if you'll be joining us.</p><label><input type="radio" name="r" checked> Yes, I'll be there!</label><label><input type="radio" name="r"> No, I'm unable to attend</label><label><input type="radio" name="r"> Maybe</label><input id="rn" placeholder="Your Name *"><input placeholder="Guest Count (Optional)"><button onclick="rsvp()">Submit</button><div id="rs"></div></div><div class="form"><small>LEAVE A LITTLE LOVE</small><h2>Share Your Wishes</h2><p>Write a message for the couple.</p><input id="wn" placeholder="Your Name *"><textarea id="wm" placeholder="Your wishes, prayers or kind words..."></textarea><button onclick="wish()">Send Message</button><div id="ws"></div></div></section>
+<section class="dark actions"><a href="https://wa.me/?text=Congratulations%20Rabya%20%26%20Adnan!" target="_blank">☏ Chat on WhatsApp</a><a href="https://www.google.com/maps/search/?api=1&query=Gujranwala%20Pakistan" target="_blank">⌖ Get Directions</a><button id="cal2">▣ Add to Calendar</button></section>
+<footer class="dark footer"><h2>Rabya & Adnan</h2><p>Thank you for being a part of our special journey.</p><p>#RabyaAndAdnan</p>♡</footer></main><script src="script.js"></script></body></html>
