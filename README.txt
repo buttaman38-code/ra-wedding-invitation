@@ -1,38 +1,28 @@
-# R & A Luxury Wedding Invitation Website
+R&A PREMIUM WEDDING INVITATION
 
-A responsive, interactive wedding invitation inspired by the supplied blush-pink, antique-gold and dark-brown reference.
+FILES (upload ALL FIVE directly into the repository root):
+- index.html
+- style.css
+- script.js
+- envelope-cover.png
+- README.txt
 
-## Files
-- `index.html` — website structure
-- `style.css` — design and responsive styling
-- `script.js` — envelope, scratch reveal, countdown, gallery, RSVP, wishes and calendar interactions
+IMPORTANT GITHUB PAGES SETTINGS:
+Repository > Settings > Pages
+Source: Deploy from a branch
+Branch: main
+Folder: /(root)
+Save.
 
-## Preview on your phone
-Open `index.html` in a browser, or publish the folder using GitHub Pages.
+Do not put these files inside another folder. The names must match exactly, especially index.html and envelope-cover.png.
 
-## Upload to GitHub Pages
-1. Extract the ZIP on your phone or computer.
-2. Open your GitHub repository.
-3. Choose **Add file → Upload files**.
-4. Upload `index.html`, `style.css`, and `script.js` (not the ZIP itself).
-5. Commit the changes.
-6. Open the GitHub Pages website link.
+The opening screen uses the included realistic envelope-cover.png image. After tapping it, the page scrolls into the invitation. The remaining sections use a matching blush, antique-gold and dark-rose editorial stationery theme. Event and gallery photographs load from Unsplash and need an internet connection.
 
-## Change before sharing
-Open `script.js` and edit:
-- `countdownDate` to the correct wedding year and time.
-- `mapSearch` to the exact marquee name/address.
-- Event dates/times in `index.html`.
-- Calendar event date in the `calendarBtn` section of `script.js`.
+CUSTOMIZE BEFORE SHARING:
+1. In script.js, change WEDDING.countdownDate to the confirmed year and time.
+2. In script.js, change mapSearch to the exact venue name/address.
+3. In index.html, update event times and venue text when confirmed.
 
-The RSVP currently prepares a WhatsApp message and opens WhatsApp's share flow. Guest wishes are shown in the current browser session; connect a database or form service if you want messages saved for all visitors.
+The RSVP opens WhatsApp's share flow. Set the hosts' WhatsApp number in the wa.me link if you want replies sent to a specific phone. Wishes currently appear in the visitor's browser session only; they are not stored centrally.
 
-Photos are loaded from Unsplash and require an internet connection. Replace the image URLs in `style.css` and `script.js` with your own wedding photos when ready.
-
-
-REALISTIC LUXURY COVER UPDATE
-The opening screen now uses envelope-cover.png, a realistic rose-pink and antique-gold envelope artwork. Visitors tap the cover to see a short opening transition and move into the existing invitation sections.
-
-Upload ALL five website files together: index.html, style.css, script.js, envelope-cover.png, and README.txt. Keep them in the repository root (same level), not inside a nested folder.
-
-Important: the existing countdown/calendar are still set to 9 November 2027 in script.js. Confirm the wedding year and final venue before sharing the invitation.
+The countdown/calendar are currently configured for November 9, 2027 as a placeholder. Confirm the wedding year before sharing.

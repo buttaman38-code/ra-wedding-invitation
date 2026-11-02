@@ -11,3 +11,43 @@
 .realistic-cover.is-opening .realistic-cover-image{transform:scale(1.055);opacity:.08;filter:blur(5px)}
 .realistic-cover.is-opening .cover-tap-feedback{opacity:1;transform:translate(-50%,0)}
 @media(max-width:600px){.realistic-cover{height:100svh;min-height:560px}.realistic-cover-image{width:100%;height:100%;object-fit:contain}}
+
+/* PREMIUM EDITORIAL FINISH — blush silk, antique gold and botanical stationery */
+:root{--rose:#a65f62;--rose-deep:#713d40;--gold:#bd9560;--gold-light:#ead2a7;--ink:#38201f;--paper:#fff8f0}
+body{background:#1c1111;color:#f9eee7}
+.section-light{background-color:#f7e6dd;background-image:radial-gradient(ellipse at 12% 8%,#fffdf8 0,transparent 38%),radial-gradient(ellipse at 90% 88%,#e9c5b8 0,transparent 35%),repeating-linear-gradient(0deg,#8d554508 0 1px,transparent 1px 5px),linear-gradient(135deg,#fff7ef,#f2dcd2 52%,#f9eae1);}
+.section-light:before{content:"";position:absolute;inset:13px;border:1px solid #bd956080;pointer-events:none;z-index:0}
+.section-light>*{position:relative;z-index:1}
+.invitation{margin:0 auto;min-height:650px;padding:110px 28px 100px}
+.invitation:after,.events-section:after,.venue-section:after,.rsvp-section:after,.wishes-section:after{content:"✧  ❧  ✧";display:block;color:#b88b61;letter-spacing:9px;font-size:17px;margin:30px auto 0}
+.ornament{font-size:29px;color:#966346;text-shadow:0 1px #fff}
+.verse{font-size:clamp(19px,4vw,25px);color:#69433a;line-height:1.5}
+.invite-copy{font-size:18px;letter-spacing:.02em;color:#76544a}
+.couple-name{color:#8c4d50;text-shadow:0 1px #fff8ef,0 5px 18px #9e5c5520}
+.section-kicker{color:#a7785d;letter-spacing:.27em;font-size:10px}
+.events-section h2,.venue-section h2,.rsvp-section h2,.wishes-section h2{color:#8f5051;text-shadow:0 1px #fff8ef}
+.event-list{max-width:720px;gap:20px}
+.event-card{min-height:185px;background:linear-gradient(120deg,#fffaf4,#f4dfd5);border:1px solid #c9a276;border-radius:3px;box-shadow:0 14px 30px #734b3b20, inset 0 0 0 5px #fff9f3;position:relative;padding:6px}
+.event-card:after{content:"";position:absolute;inset:5px;border:1px solid #d9b994;pointer-events:none}
+.event-photo{width:42%;min-height:170px;filter:saturate(.82) sepia(.08)}
+.event-info{padding:22px 24px;display:flex;flex-direction:column;justify-content:center}
+.event-number{color:#ad8058;letter-spacing:.3em}
+.event-info h3{font-family:"Playfair Display",serif;font-size:27px;color:#70433d;font-weight:400}
+.event-info p{font-size:15px;color:#866357}
+.venue-photo{height:clamp(230px,55vw,390px);border:8px solid #fff8ef;outline:1px solid #c39a6b;border-radius:2px;box-shadow:0 18px 40px #60382e30}
+.venue-section h3{font-size:24px;color:#70433d}
+.rose-button{background:linear-gradient(135deg,#b87978,#884b50 55%,#6d3940);border:1px solid #e0bc8e;border-radius:2px;letter-spacing:.06em;box-shadow:0 8px 20px #70414330,inset 0 1px #ffffff55;padding:14px 27px}
+.soft-form{background:linear-gradient(145deg,#fffaf5,#f3dfd6);border:1px solid #c49a6d;border-radius:2px;box-shadow:0 14px 35px #80534820,inset 0 0 0 5px #fff9f2;padding:28px}
+.soft-form input:not([type=radio]),.soft-form textarea{border-radius:2px;background:#fffdf9;border-color:#d7bda7}
+.gallery-section{background-image:radial-gradient(ellipse at 50% 0,#70423c 0,transparent 50%),linear-gradient(145deg,#1b1010,#39201e 55%,#1b1111)}
+.gallery-section:after{content:"";position:absolute;inset:14px;border:1px solid #c49b6d70;pointer-events:none}
+.gallery-main{border:8px solid #f8eadc;outline:1px solid #c49b6d;border-radius:2px;box-shadow:0 18px 45px #0009,0 0 0 4px #6d453c;max-width:560px;height:clamp(270px,70vw,430px)}
+.thumb{border:2px solid #b78d64;border-radius:2px}
+.thumb.active{border-color:#f4d8a7;box-shadow:0 0 0 2px #7c4b40}
+.scratch-wrap{border:7px solid #fff0df;outline:1px solid #c69b66;border-radius:2px;box-shadow:0 18px 38px #0008,0 0 0 3px #634139}
+.countdown div{border-radius:2px;border:1px solid #c79d70;background:linear-gradient(145deg,#422522,#251615);box-shadow:inset 0 0 0 3px #ffffff08}
+.final-section{background-image:radial-gradient(ellipse at 50% 30%,#73453c 0,transparent 55%),linear-gradient(145deg,#180e0d,#38201e 55%,#160d0d)}
+.final-section:after{content:"";position:absolute;inset:14px;border:1px solid #c49b6d70;pointer-events:none}
+.final-section>*{position:relative;z-index:1}
+.music-indicator{border-radius:2px;box-shadow:0 4px 12px #0005}
+@media(max-width:520px){.event-card{min-height:150px}.event-photo{width:38%;min-height:145px}.event-info{padding:14px}.event-info h3{font-size:22px}.event-info p{font-size:13px}.section-light:before{inset:8px}.soft-form{padding:21px}.invitation{min-height:590px}}
