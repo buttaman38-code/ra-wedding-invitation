@@ -13,11 +13,12 @@ const toast = (message) => {
 };
 
 function openInvitation(){
-  $("#openInvite").classList.add("open");
-  setTimeout(()=>$("#invitation").scrollIntoView({behavior:"smooth"}),850);
+   const cover = $("#home");
+   if (cover.classList.contains("is-opening")) return;
+   cover.classList.add("is-opening");
+   setTimeout(()=>$("#invitation").scrollIntoView({behavior:"smooth"}),750);
 }
 $("#openInvite").addEventListener("click",openInvitation);
-$("#openHint").addEventListener("click",openInvitation);
 document.querySelectorAll("[data-scroll]").forEach(b=>b.addEventListener("click",()=>$(b.dataset.scroll).scrollIntoView({behavior:"smooth"})));
 
 function updateCountdown(){
