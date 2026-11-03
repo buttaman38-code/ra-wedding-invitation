@@ -78,12 +78,25 @@ $("#calendarBtn").addEventListener("click",()=>{
  const blob=new Blob([ics],{type:"text/calendar"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="Rabya-and-Adnan-wedding.ics";a.click();URL.revokeObjectURL(url);
 });
 $("#mapLink").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(WEDDING.mapSearch);
+
 const weddingMusic = $("#weddingMusic");
-$("#musicToggle").addEventListener("click", async () => {
- if (weddingMusic.paused) {
-   try { await weddingMusic.play(); $("#musicIcon").textContent = "Ⅱ"; $("#musicToggle").setAttribute("aria-label", "Pause wedding music"); }
-   catch (err) { toast("Please tap again to start the music."); }
- } else {
-   weddingMusic.pause(); $("#musicIcon").textContent = "♫"; $("#musicToggle").setAttribute("aria-label", "Play wedding music");
- }
+const musicToggle = $("#musicToggle");
+const musicIcon = $("#musicIcon");
+
+musicToggle.addEventListener("click", async () => {
+  if (weddingMusic.paused) {
+    try {
+      weddingMusic.volume = 0.8;
+      await weddingMusic.play();
+      musicIcon.textContent = "Ⅱ";
+      musicToggle.setAttribute("aria-label", "Pause wedding music");
+    } catch (error) {
+      console.error("Music error:", error);
+      toast("Music could not play. Please check the audio file.");
+    }
+  } else {
+    weddingMusic.pause();
+    musicIcon.textContent = "♫";
+    musicToggle.setAttribute("aria-label", "Play wedding music");
+  }
 });
