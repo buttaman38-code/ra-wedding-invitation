@@ -84,11 +84,28 @@ function showPhoto(i){photoIndex=(i+photos.length)%photos.length;$("#galleryMain
 document.querySelectorAll(".thumb").forEach(b=>{b.style.backgroundImage=`url("${photos[Number(b.dataset.index)]}")`;b.addEventListener("click",()=>showPhoto(Number(b.dataset.index)))});
 $("#galleryMain").addEventListener("click",()=>showPhoto(photoIndex+1));$("#galleryMain").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" ")showPhoto(photoIndex+1)});showPhoto(0);
 
-$("#rsvpForm").addEventListener("submit",e=>{
- e.preventDefault();const f=new FormData(e.currentTarget),name=f.get("guestName"),att=f.get("attendance"),count=f.get("guestCount")||"Not specified";
- const message=`Wedding RSVP%0AName: ${encodeURIComponent(name)}%0AResponse: ${encodeURIComponent(att)}%0AGuest count: ${encodeURIComponent(count)}`;
- $("#rsvpNote").textContent="Your RSVP is ready to send. WhatsApp will open so you can share it with the hosts.";
- window.open(`https://wa.me/?text=${message}`,"_blank");e.currentTarget.reset();
+// RSVP — Send guest details to WhatsApp
+const RSVP_WHATSAPP = "923001234567";
+
+$("#rsvpForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = new FormData(e.currentTarget);
+  const name = form.get("guestName");
+  const attendance = form.get("attendance");
+  const count = form.get("guestCount") || "Not specified";
+
+  const message =
+    "Wedding RSVP - Rabya & Adnan\n" +
+    "Guest Name: " + name + "\n" +
+    "Attendance: " + attendance + "\n" +
+    "Number of Guests: " + count;
+
+  const whatsappURL =
+    "https://wa.me/" + RSVP_WHATSAPP +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank");
 });
 $("#wishMessage").addEventListener("input",e=>$("#charCount").textContent=e.target.value.length);
 $("#wishForm").addEventListener("submit",e=>{
