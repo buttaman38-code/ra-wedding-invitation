@@ -157,7 +157,28 @@
       <p class="signature">Same love. New chapter. Forever.</p>
     </section>
   </main>
-  <div class="toast" id="toast"></div>
-  <script src="script.js"></script>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+
+<script>
+const music = document.getElementById("weddingMusic");
+const musicBtn = document.getElementById("musicToggle");
+const musicIcon = document.getElementById("musicIcon");
+
+musicBtn.addEventListener("click", async function () {
+  try {
+    if (music.paused) {
+      await music.play();
+      musicIcon.textContent = "Ⅱ";
+    } else {
+      music.pause();
+      musicIcon.textContent = "♫";
+    }
+  } catch (error) {
+    alert("Music could not start. Please try again.");
+  }
+});
+</script>
+
 </body>
 </html>
