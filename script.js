@@ -109,6 +109,30 @@ function updateCountdown(){
 updateCountdown();setInterval(updateCountdown,1000);
 
 const canvas=$("#scratchCanvas"),ctx=canvas.getContext("2d");let drawing=false,erased=false;
+// ROSE-GOLD SCRATCH SPARKLES ✨
+function createScratchSparkles(x,y){
+  const colors=["#fff0c7","#f7c6d0","#e8b86d","#ffffff","#d99aab"];
+
+  for(let i=0;i<9;i++){
+    const sparkle=document.createElement("span");
+    sparkle.textContent=Math.random()>.5?"✦":"✧";
+
+    sparkle.style.cssText=`
+      position:fixed;
+      left:${x+(Math.random()-.5)*55}px;
+      top:${y+(Math.random()-.5)*55}px;
+      color:${colors[Math.floor(Math.random()*colors.length)]};
+      font-size:${10+Math.random()*13}px;
+      pointer-events:none;
+      z-index:99999;
+      text-shadow:0 0 8px #f8dca0;
+      animation:scratchGlitter .8s ease-out forwards;
+    `;
+
+    document.body.appendChild(sparkle);
+    setTimeout(()=>sparkle.remove(),850);
+  }
+}
 function paintScratch(){
   const r=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
   canvas.width=r.width*dpr;canvas.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
@@ -121,7 +145,16 @@ function paintScratch(){
 function scratchStart(e){drawing=true;scratchMove(e)}
 function scratchMove(e){
  if(!drawing)return;const r=canvas.getBoundingClientRect(),p=e.touches?e.touches[0]:e;
- const x=p.clientX-r.left,y=p.clientY-r.top;ctx.globalCompositeOperation="destination-out";ctx.beginPath();ctx.arc(x,y,24,0,Math.PI*2);ctx.fill();
+ const x=p.clientX-r.left,y=p.clientY-r.top;
+
+if(Math.random()>.35){
+  createScratchSparkles(p.clientX,p.clientY);
+}
+
+ctx.globalCompositeOperation="destination-out";
+ctx.beginPath();
+ctx.arc(x,y,24,0,Math.PI*2);
+ctx.fill();
  const pixels=ctx.getImageData(0,0,canvas.width,canvas.height).data;let clear=0;for(let i=3;i<pixels.length;i+=32)if(pixels[i]===0)clear++;
  if(clear/(pixels.length/32)>.48&&!erased){erased=true;canvas.style.transition="opacity .8s";canvas.style.opacity="0";setTimeout(()=>canvas.style.display="none",850);toast("Our special dates are revealed ♥")}
 }
