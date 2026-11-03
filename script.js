@@ -52,7 +52,7 @@ canvas.addEventListener("pointerdown",scratchStart);canvas.addEventListener("poi
 paintScratch();window.addEventListener("resize",()=>{if(!erased){canvas.style.display="block";canvas.style.opacity="1";paintScratch()}});
 
 const photos=[
- "https://mariafaisal.com/cdn/shop/articles/Mehndi_Image_6065c6d7-53e8-4883-ab1f-c48de15e1f47.png?v=1780849788",
+ "https://share.google/MydNLZlJUjBqkyQjI",
  "https://akmalscatering.com/images/events/1778732833.png",
  "https://static.showit.co/800/MIbT4DlHTResPhfoCKyp2A/227789/chicago-indian-wedding-decorator-drury-lane-eventful-moments-by-alina.jpg",
  "https://marcem.com.pk/wp-content/uploads/2025/08/DSC04083-1024x683_11zon.webp"
