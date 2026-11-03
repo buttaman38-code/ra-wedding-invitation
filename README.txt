@@ -1,28 +1,17 @@
-R&A PREMIUM WEDDING INVITATION
+R & A Wedding Invitation — Floral Background Edition
 
-FILES (upload ALL FIVE directly into the repository root):
+This package includes:
 - index.html
 - style.css
 - script.js
 - envelope-cover.png
+- floral-background.png
 - README.txt
 
-IMPORTANT GITHUB PAGES SETTINGS:
-Repository > Settings > Pages
-Source: Deploy from a branch
-Branch: main
-Folder: /(root)
-Save.
+Upload all six files directly into the ROOT of your GitHub repository (the same folder as index.html). Choose Add file > Upload files, select all files, then Commit changes.
 
-Do not put these files inside another folder. The names must match exactly, especially index.html and envelope-cover.png.
+GitHub Pages settings: Settings > Pages > Deploy from a branch > main > /(root).
 
-The opening screen uses the included realistic envelope-cover.png image. After tapping it, the page scrolls into the invitation. The remaining sections use a matching blush, antique-gold and dark-rose editorial stationery theme. Event and gallery photographs load from Unsplash and need an internet connection.
+The website now uses a matching blush-pink floral and gold backdrop throughout the invitation sections after the opening envelope. The opening envelope artwork itself remains unchanged. Event dates are Mehndi 26 November 2026, Nikah 27 November 2026, and Walima 28 November 2026.
 
-CUSTOMIZE BEFORE SHARING:
-1. In script.js, change WEDDING.countdownDate to the confirmed year and time.
-2. In script.js, change mapSearch to the exact venue name/address.
-3. In index.html, update event times and venue text when confirmed.
-
-The RSVP opens WhatsApp's share flow. Set the hosts' WhatsApp number in the wa.me link if you want replies sent to a specific phone. Wishes currently appear in the visitor's browser session only; they are not stored centrally.
-
-The countdown/calendar are currently configured for November 9, 2027 as a placeholder. Confirm the wedding year before sharing.
+Keep all image files beside index.html. File names are case-sensitive. The event and gallery photos currently use online image links and need an internet connection.

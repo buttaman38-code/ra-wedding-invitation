@@ -2,7 +2,7 @@
 const WEDDING = {
   couple: "Rabya & Adnan",
   // Change the year and time below to your actual Mehndi date/time.
-  countdownDate: "2027-11-09T17:00:00",
+  countdownDate: "2026-11-26T17:00:00",
   mapSearch: "Marquee, Gujranwala"
 };
 
@@ -52,10 +52,10 @@ canvas.addEventListener("pointerdown",scratchStart);canvas.addEventListener("poi
 paintScratch();window.addEventListener("resize",()=>{if(!erased){canvas.style.display="block";canvas.style.opacity="1";paintScratch()}});
 
 const photos=[
- "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1100&q=90",
- "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1100&q=90",
- "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1100&q=90",
- "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1100&q=90"
+ "https://mariafaisal.com/cdn/shop/articles/Mehndi_Image_6065c6d7-53e8-4883-ab1f-c48de15e1f47.png?v=1780849788",
+ "https://akmalscatering.com/images/events/1778732833.png",
+ "https://static.showit.co/800/MIbT4DlHTResPhfoCKyp2A/227789/chicago-indian-wedding-decorator-drury-lane-eventful-moments-by-alina.jpg",
+ "https://marcem.com.pk/wp-content/uploads/2025/08/DSC04083-1024x683_11zon.webp"
 ];let photoIndex=0;
 function showPhoto(i){photoIndex=(i+photos.length)%photos.length;$("#galleryMain").style.backgroundImage=`url("${photos[photoIndex]}")`;$("#galleryCount").textContent=`${photoIndex+1} / ${photos.length}`;document.querySelectorAll(".thumb").forEach((b,n)=>b.classList.toggle("active",n===photoIndex))}
 document.querySelectorAll(".thumb").forEach(b=>{b.style.backgroundImage=`url("${photos[Number(b.dataset.index)]}")`;b.addEventListener("click",()=>showPhoto(Number(b.dataset.index)))});
@@ -73,7 +73,7 @@ $("#wishForm").addEventListener("submit",e=>{
  const card=document.createElement("div");card.className="wish-note";const strong=document.createElement("strong"),p=document.createElement("p");strong.textContent=name;p.textContent=msg;card.append(strong,p);$("#wishesWall").prepend(card);e.currentTarget.reset();$("#charCount").textContent="0";toast("Your lovely wish has been added ♥");
 });
 $("#calendarBtn").addEventListener("click",()=>{
- const start="20271109T170000",end="20271109T220000";
+ const start="20261126T170000",end="20261126T220000";
  const ics=`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${start}\nDTEND:${end}\nSUMMARY:Mehndi - ${WEDDING.couple}\nLOCATION:${WEDDING.mapSearch}\nDESCRIPTION:Wedding celebrations for ${WEDDING.couple}\nEND:VEVENT\nEND:VCALENDAR`;
  const blob=new Blob([ics],{type:"text/calendar"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="Rabya-and-Adnan-wedding.ics";a.click();URL.revokeObjectURL(url);
 });
