@@ -91,3 +91,24 @@ body{background-color:#3a1e20;background-image:linear-gradient(rgba(49,20,25,.18
 @media(max-width:700px){body,.invitation.section-light,.events-section.section-light,.venue-section.section-light,.rsvp-section.section-light,.wishes-section.section-light,.scratch-section.section-dark,.countdown-section.section-dark,.gallery-section.section-dark,.final-section.section-dark{background-attachment:scroll;background-position:center top}}
 .music-indicator{cursor:pointer;font-family:serif;display:grid;place-items:center;padding:0}
 .music-indicator:focus-visible{outline:2px solid #f3d4b6;outline-offset:3px}
+.memory-video {
+  width: min(90%, 760px);
+  margin: 28px auto;
+  border: 1px solid rgba(212, 175, 100, .7);
+  padding: 8px;
+  background: rgba(255,255,255,.04);
+  border-radius: 12px;
+}
+
+.memory-video video {
+  display: block;
+  width: 100%;
+  max-height: 75vh;
+  border-radius: 7px;
+  background: #000;
+}
+
+.memory-caption,
+.memory-footer {
+  text-align: center;
+}
