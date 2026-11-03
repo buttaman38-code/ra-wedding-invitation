@@ -36,6 +36,12 @@ body{background:#1c1111;color:#f9eee7}
 .event-info p{font-size:15px;color:#866357}
 .venue-photo{height:clamp(230px,55vw,390px);border:8px solid #fff8ef;outline:1px solid #c39a6b;border-radius:2px;box-shadow:0 18px 40px #60382e30}
 .venue-section h3{font-size:24px;color:#70433d}
+.venue-photo{
+  background-image:url('venue.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
 .rose-button{background:linear-gradient(135deg,#b87978,#884b50 55%,#6d3940);border:1px solid #e0bc8e;border-radius:2px;letter-spacing:.06em;box-shadow:0 8px 20px #70414330,inset 0 1px #ffffff55;padding:14px 27px}
 .soft-form{background:linear-gradient(145deg,#fffaf5,#f3dfd6);border:1px solid #c49a6d;border-radius:2px;box-shadow:0 14px 35px #80534820,inset 0 0 0 5px #fff9f2;padding:28px}
 .soft-form input:not([type=radio]),.soft-form textarea{border-radius:2px;background:#fffdf9;border-color:#d7bda7}
