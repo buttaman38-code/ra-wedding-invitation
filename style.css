@@ -112,3 +112,19 @@ body{background-color:#3a1e20;background-image:linear-gradient(rgba(49,20,25,.18
 .memory-footer {
   text-align: center;
 }
+/* MEHNDI EVENT PHOTO FIX */
+.event-photo {
+  position: relative;
+  overflow: hidden;
+  min-height: 170px;
+}
+
+.event-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 170px;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
