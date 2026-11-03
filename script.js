@@ -27,6 +27,7 @@ const rsvpForm = document.getElementById("rsvpForm");
 if (rsvpForm) {
   rsvpForm.addEventListener("submit", function(e) {
     e.preventDefault();
+    alert("RSVP JavaScript is working!");
 
     const form = new FormData(rsvpForm);
     const name = form.get("guestName") || "";
