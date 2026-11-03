@@ -21,6 +21,60 @@ if (weddingMusic && musicToggle && musicIcon) {
     }
   });
 }
+// RSVP FORM
+const rsvpForm = document.getElementById("rsvpForm");
+
+if (rsvpForm) {
+  rsvpForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const form = new FormData(rsvpForm);
+    const name = form.get("guestName") || "";
+    const attendance = form.get("attendance") || "";
+    const count = form.get("guestCount") || "Not specified";
+
+    const message =
+      "Wedding RSVP - Rabya & Adnan\n" +
+      "Name: " + name + "\n" +
+      "Attendance: " + attendance + "\n" +
+      "Guests: " + count;
+
+    const url = "https://wa.me/923107185753?text=" +
+      encodeURIComponent(message);
+
+    window.open(url, "_blank");
+  });
+}
+
+// WISHES FORM
+const wishForm = document.getElementById("wishForm");
+
+if (wishForm) {
+  wishForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("wishName").value.trim();
+    const msg = document.getElementById("wishMessage").value.trim();
+
+    if (!name || !msg) return;
+
+    const card = document.createElement("div");
+    card.className = "wish-note";
+
+    const strong = document.createElement("strong");
+    strong.textContent = name;
+
+    const p = document.createElement("p");
+    p.textContent = msg;
+
+    card.append(strong, p);
+    document.getElementById("wishesWall").prepend(card);
+
+    wishForm.reset();
+    document.getElementById("charCount").textContent = "0";
+    alert("Your lovely wish has been added!");
+  });
+}
 // EASY CUSTOMIZATION: edit these details when your final arrangements are confirmed.
 const WEDDING = {
   couple: "Rabya & Adnan",
@@ -87,31 +141,8 @@ $("#galleryMain").addEventListener("click",()=>showPhoto(photoIndex+1));$("#gall
 // RSVP — Send guest details to WhatsApp
 const RSVP_WHATSAPP = "923107185753";
 
-$("#rsvpForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const form = new FormData(e.currentTarget);
-  const name = form.get("guestName");
-  const attendance = form.get("attendance");
-  const count = form.get("guestCount") || "Not specified";
-
-  const message =
-    "Wedding RSVP - Rabya & Adnan\n" +
-    "Guest Name: " + name + "\n" +
-    "Attendance: " + attendance + "\n" +
-    "Number of Guests: " + count;
-
-  const whatsappURL =
-    "https://wa.me/" + RSVP_WHATSAPP +
-    "?text=" + encodeURIComponent(message);
-
-  window.open(whatsappURL, "_blank");
-});
 $("#wishMessage").addEventListener("input",e=>$("#charCount").textContent=e.target.value.length);
-$("#wishForm").addEventListener("submit",e=>{
- e.preventDefault();const name=$("#wishName").value.trim(),msg=$("#wishMessage").value.trim();if(!name||!msg)return;
- const card=document.createElement("div");card.className="wish-note";const strong=document.createElement("strong"),p=document.createElement("p");strong.textContent=name;p.textContent=msg;card.append(strong,p);$("#wishesWall").prepend(card);e.currentTarget.reset();$("#charCount").textContent="0";toast("Your lovely wish has been added ♥");
-});
+
 $("#calendarBtn").addEventListener("click",()=>{
  const start="20261126T170000",end="20261126T220000";
  const ics=`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${start}\nDTEND:${end}\nSUMMARY:Mehndi - ${WEDDING.couple}\nLOCATION:${WEDDING.mapSearch}\nDESCRIPTION:Wedding celebrations for ${WEDDING.couple}\nEND:VEVENT\nEND:VCALENDAR`;
