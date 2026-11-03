@@ -1,3 +1,26 @@
+// WEDDING MUSIC — register before other website scripts
+const weddingMusic = document.getElementById("weddingMusic");
+const musicToggle = document.getElementById("musicToggle");
+const musicIcon = document.getElementById("musicIcon");
+
+if (weddingMusic && musicToggle && musicIcon) {
+  musicToggle.addEventListener("click", async function () {
+    if (weddingMusic.paused) {
+      try {
+        weddingMusic.volume = 0.8;
+        await weddingMusic.play();
+        musicIcon.textContent = "Ⅱ";
+        musicToggle.setAttribute("aria-label", "Pause wedding music");
+      } catch (error) {
+        alert("Music could not play: " + error.message);
+      }
+    } else {
+      weddingMusic.pause();
+      musicIcon.textContent = "♫";
+      musicToggle.setAttribute("aria-label", "Play wedding music");
+    }
+  });
+}
 // EASY CUSTOMIZATION: edit these details when your final arrangements are confirmed.
 const WEDDING = {
   couple: "Rabya & Adnan",
@@ -79,24 +102,3 @@ $("#calendarBtn").addEventListener("click",()=>{
 });
 $("#mapLink").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(WEDDING.mapSearch);
 
-const weddingMusic = $("#weddingMusic");
-const musicToggle = $("#musicToggle");
-const musicIcon = $("#musicIcon");
-
-musicToggle.addEventListener("click", async () => {
-  if (weddingMusic.paused) {
-    try {
-      weddingMusic.volume = 0.8;
-      await weddingMusic.play();
-      musicIcon.textContent = "Ⅱ";
-      musicToggle.setAttribute("aria-label", "Pause wedding music");
-    } catch (error) {
-      console.error("Music error:", error);
-      toast("Music could not play. Please check the audio file.");
-    }
-  } else {
-    weddingMusic.pause();
-    musicIcon.textContent = "♫";
-    musicToggle.setAttribute("aria-label", "Play wedding music");
-  }
-});
