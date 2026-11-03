@@ -85,7 +85,7 @@ document.querySelectorAll(".thumb").forEach(b=>{b.style.backgroundImage=`url("${
 $("#galleryMain").addEventListener("click",()=>showPhoto(photoIndex+1));$("#galleryMain").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" ")showPhoto(photoIndex+1)});showPhoto(0);
 
 // RSVP — Send guest details to WhatsApp
-const RSVP_WHATSAPP = "923001234567";
+const RSVP_WHATSAPP = "923107185753";
 
 $("#rsvpForm").addEventListener("submit", function(e) {
   e.preventDefault();
