@@ -52,7 +52,7 @@ canvas.addEventListener("pointerdown",scratchStart);canvas.addEventListener("poi
 paintScratch();window.addEventListener("resize",()=>{if(!erased){canvas.style.display="block";canvas.style.opacity="1";paintScratch()}});
 
 const photos=[
- "https://share.google/MydNLZlJUjBqkyQjI",
+ "https://mariafaisal.com/cdn/shop/articles/Mehndi_Image_6065c6d7-53e8-4883-ab1f-c48de15e1f47.png?v=1780849788",
  "https://akmalscatering.com/images/events/1778732833.png",
  "https://static.showit.co/800/MIbT4DlHTResPhfoCKyp2A/227789/chicago-indian-wedding-decorator-drury-lane-eventful-moments-by-alina.jpg",
  "https://marcem.com.pk/wp-content/uploads/2025/08/DSC04083-1024x683_11zon.webp"
@@ -78,4 +78,12 @@ $("#calendarBtn").addEventListener("click",()=>{
  const blob=new Blob([ics],{type:"text/calendar"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="Rabya-and-Adnan-wedding.ics";a.click();URL.revokeObjectURL(url);
 });
 $("#mapLink").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(WEDDING.mapSearch);
-$("#musicToggle").addEventListener("click",()=>toast("Add your favourite MP3 file in the audio element to enable music."));
+const weddingMusic = $("#weddingMusic");
+$("#musicToggle").addEventListener("click", async () => {
+ if (weddingMusic.paused) {
+   try { await weddingMusic.play(); $("#musicIcon").textContent = "Ⅱ"; $("#musicToggle").setAttribute("aria-label", "Pause wedding music"); }
+   catch (err) { toast("Please tap again to start the music."); }
+ } else {
+   weddingMusic.pause(); $("#musicIcon").textContent = "♫"; $("#musicToggle").setAttribute("aria-label", "Play wedding music");
+ }
+});
