@@ -96,9 +96,13 @@ function openInvitation(){
 
    cover.classList.add("is-opening");
 
-   if (weddingMusic.paused) {
-      weddingMusic.play().catch(error => {
-         console.log("Music playback was blocked:", error);
+   if (weddingMusic) {
+      weddingMusic.volume = 0.8;
+      weddingMusic.play().then(() => {
+         musicIcon.textContent = "Ⅱ";
+         musicToggle.setAttribute("aria-label", "Pause wedding music");
+      }).catch(error => {
+         console.log("Music playback:", error);
       });
    }
 
