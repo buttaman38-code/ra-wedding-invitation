@@ -93,7 +93,15 @@ const toast = (message) => {
 function openInvitation(){
    const cover = $("#home");
    if (cover.classList.contains("is-opening")) return;
+
    cover.classList.add("is-opening");
+
+   if (weddingMusic.paused) {
+      weddingMusic.play().catch(error => {
+         console.log("Music playback was blocked:", error);
+      });
+   }
+
    setTimeout(()=>$("#invitation").scrollIntoView({behavior:"smooth"}),750);
 }
 $("#openInvite").addEventListener("click",openInvitation);
