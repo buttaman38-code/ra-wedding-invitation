@@ -96,15 +96,13 @@ function openInvitation(){
 
    cover.classList.add("is-opening");
 
-   if (weddingMusic) {
-      weddingMusic.volume = 0.8;
-      weddingMusic.play().then(() => {
-         musicIcon.textContent = "Ⅱ";
-         musicToggle.setAttribute("aria-label", "Pause wedding music");
-      }).catch(error => {
-         console.log("Music playback:", error);
-      });
-   }
+   weddingMusic.volume = 0.8;
+   weddingMusic.play().then(() => {
+      musicIcon.textContent = "Ⅱ";
+      musicToggle.setAttribute("aria-label", "Pause wedding music");
+   }).catch(error => {
+      console.log("Music error:", error);
+   });
 
    setTimeout(()=>$("#invitation").scrollIntoView({behavior:"smooth"}),750);
 }
