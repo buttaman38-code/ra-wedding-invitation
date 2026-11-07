@@ -187,10 +187,43 @@ const RSVP_WHATSAPP = "923107185753";
 
 $("#wishMessage").addEventListener("input",e=>$("#charCount").textContent=e.target.value.length);
 
-$("#calendarBtn").addEventListener("click",()=>{
- const start="20261126T170000",end="20261126T220000";
- const ics=`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${start}\nDTEND:${end}\nSUMMARY:Mehndi - ${WEDDING.couple}\nLOCATION:${WEDDING.mapSearch}\nDESCRIPTION:Wedding celebrations for ${WEDDING.couple}\nEND:VEVENT\nEND:VCALENDAR`;
- const blob=new Blob([ics],{type:"text/calendar"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="Rabya-and-Adnan-wedding.ics";a.click();URL.revokeObjectURL(url);
-});
+const calendarBtn = document.getElementById("calendarBtn");
+
+if (calendarBtn) {
+  calendarBtn.addEventListener("click", () => {
+    const start = "20261126T170000";
+    const end = "20261126T220000";
+
+    const ics = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Rabya and Adnan//Wedding//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:mehndi-rabya-adnan-20261126
+DTSTAMP:20261107T000000Z
+DTSTART:${start}
+DTEND:${end}
+SUMMARY:Mehndi - ${WEDDING.couple}
+LOCATION:At Home
+DESCRIPTION:Wedding celebrations for ${WEDDING.couple}
+END:VEVENT
+END:VCALENDAR`;
+
+    const blob = new Blob([ics], {
+      type: "text/calendar;charset=utf-8"
+    });
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = "Rabya-and-Adnan-Mehndi.ics";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+}
 $("#mapLink").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(WEDDING.mapSearch);
 
